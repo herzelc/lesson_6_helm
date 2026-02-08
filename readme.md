@@ -1,3 +1,6 @@
+# lesson_6_helm
+lesson_6_helm
+
 שיעורי בית – שיעור 6 – HELM
 Part 1 – Create Helm Chart
 PS C:\Users\Herzel\lesson6\helm_lesson6> dir -s
