@@ -10,3 +10,6 @@ config:
 
 secrets:
   apiToken: "MySecretToken-777"
+
+cronjob:
+  schedule: "*/1 * * * *"
