@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ .Release.Name }}-ds
+spec:
+  selector:
+    matchLabels:
+      app: myapp-ds
+  template:
+    metadata:
+      labels:
+        app: myapp-ds
+    spec:
+      containers:
+      - name: busybox
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        command: ["sh", "-c", "echo DaemonSet is running. Message: $APP_MESSAGE. Token: $API_TOKEN; sleep 3600"]
+        env:
+        - name: APP_MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: {{ .Release.Name }}-config
+              key: app-message
+        - name: API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-secret
+              key: api-token

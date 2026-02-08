@@ -1,0 +1,12 @@
+replicaCount: 2
+
+image:
+  repository: busybox
+  tag: "1.36"
+  command: ["sh", "-c", "echo $APP_MESSAGE && sleep 3600"]
+
+config:
+  appMessage: "Welcome to Lesson 6 - lowercase version!"
+
+secrets:
+  apiToken: "MySecretToken-777"
